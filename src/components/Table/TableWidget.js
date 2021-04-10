@@ -32,7 +32,7 @@ export default function TableWidget(props) {
   
   const [tabs, setTabs] = useState(getTestTabs(data));
   const [selectedTab, setSelectedTab] = useState(getTestTabs(data)[0]);
-  const [tests, setTests] = useState(getTestsNames(data));
+  const [tests, /*setTests*/] = useState(getTestsNames(data));
   return (
     <TableContext.Provider value={
       {
@@ -72,7 +72,7 @@ function getTestTabs(data) {
   return Array.from(new Set(resultColumns));
 }
 
-function getDataByColumn(data, column) {
+/*function getDataByColumn(data, column) {
   const selectedData = JSON.parse(JSON.stringify(data));
 
   for (let launch in selectedData) {
@@ -88,4 +88,4 @@ function getDataByColumn(data, column) {
   }
 
   return selectedData;
-}
+}*/

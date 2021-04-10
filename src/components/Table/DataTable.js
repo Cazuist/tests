@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import TableContext from '../../contexts/TableContext';
 
 export default function DataTable() {
-  const { tests, selectedTab, setTests, data } = useContext(TableContext);
+  const { tests, selectedTab, /*setTests,*/ data } = useContext(TableContext);
 
   const renderedData = getDataByColumn(data, selectedTab);
 
