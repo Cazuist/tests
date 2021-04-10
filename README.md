@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/29f9hnov3h02qcha?svg=true)](https://ci.appveyor.com/project/Cazuist/tests)

@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 400px) {
+  body {
+    font-size: 10px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+html {
+  font-size: calc( 10px + (14 - 10) * ((100vw - 400px) / ( 800 - 400)));
+}
+
+body {
+  font-family: sans-serif;  
+}
+
+/* menu
+*/
+.page__wrapper {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.menu__box {
+  display: flex;
+  max-width: 1000px;
+  margin: 3rem auto;
+  margin-top: 0;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
+  background: lightgray;
+}
+
+.menu__item {
+  position: relative;
+  flex-grow: 1;
+  text-align: center;
+  line-height: 3rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: darkblue;
+  font-weight: 700;
+  opacity: .6;
+  border-bottom-width: .2rem;
+  border-bottom-style: solid;
+  border-bottom-color: transparent; 
+}
+
+.menu__item:hover {
+  opacity: 1;
+  border-bottom-color: hsl(60, 50%, 50%);
+}
+
+.menu__item-active,
+.menu__item-active:hover {
+  opacity: 1;
+  border-bottom-color: hsl(120, 50%, 50%);
+}
+
+.table__container {
+  width: 100%;
+}
+
+.table__tabs {
+  display: flex;  
+}
+
+.table__tabs_tab {
+  padding: 5px 10px;
+
+  border: 2px solid lightblue;
+  background-color: lightgray;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.table__tabs_tab:not(:first-of-type) {
+  margin-left: 10px;
+}
+
+.tab_selected {
+  background-color: blue;
+  border-color: tan;
+  color: white;
+  font-weight: 700;
+}
+
+.data-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  border: 4px solid tan;
+}
+
+thead {
+  border-bottom: 4px solid tan;
+}
+
+th {
+  height: 34px;
+  border: 2px solid white;
+  background-color: gray;
+}
+
+td {
+  height: 40px;
+  text-align: center;
+  border: 1px solid red;
+}
+
+th:first-of-type,
+td:first-of-type {
+  width: 20%;
+  border-right: 5px solid tan;
+}
+
+tbody tr:nth-of-type(2n+1) {
+  background-color: lightgreen;
+}
+
+tbody tr:nth-of-type(2n) {
+  background-color: pink;
+}
+
+.test-launcher__box {
+  margin-top: 20px;
+}
+
+.launcher__btn {
+  padding: 10px 15px;
+
+  border: 2px solid coral;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+}
