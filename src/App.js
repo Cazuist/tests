@@ -62,12 +62,13 @@ function App() {
       <div className='page__wrapper'>
         <Router>
           <NavMenu />
-          <Switch>            
+          <Switch>  
+            <Route exac path="/tests" component={HomePage} />          
             <Route path="/Page2" component={Page2 } />
             <Route path="/Page3" component={Page3 } />
             <Route path="/Page4" component={Page4 } />
             <Route path='/:id' render={() => <StatPage stats={stats}/>}></Route>                     
-            <Route path="/" component={HomePage} />
+            
             <Route path="*" component={NotFoundPage} />
           </Switch>
         </Router>      
