@@ -1,21 +1,27 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import TableContext from '../../contexts/TableContext';
+import * as fn from '../../functions/functions';
 
-export default function DataTable() {
+export default function DataTable(props) {
   const { tests, selectedTab, /*setTests,*/ data } = useContext(TableContext);
 
-  const renderedData = getDataByColumn(data, selectedTab);
+  const renderedData = fn.getDataByColumn(data, selectedTab);
+  const isEmptyCell = (launch, test, selectedTab) => !renderedData[launch][test] ||
+           !renderedData[launch][test][selectedTab];
 
+  const onAction = (l, t) => {
+    props.onAction(l, t);
+  };
 
   return (
     <table className='data-table'>
       <thead>
         <tr>
-          <th></th>
+          <th rowSpan='2'>Запуски</th>
           {tests.map((test, i) => <th key={i}>{test}</th>)}
         </tr>
         <tr>
-          <th>Запуски</th>
           {tests.map((test, i) => <th key={i}>{selectedTab}</th>)}
         </tr>
       </thead>
@@ -25,10 +31,13 @@ export default function DataTable() {
           <tr key={i}>
             <td>{launch}</td>
             {tests.map((test, i) =>
-              <td key={i}>
-                {!renderedData[launch][test] || !renderedData[launch][test][selectedTab] 
+              <td key={i} onClick={() => onAction(launch, test)}>
+                <Link to={`/${launch}/${test}`}>
+                  {isEmptyCell(launch, test, selectedTab) 
                   ? 'n/a' 
                   : renderedData[launch][test][selectedTab]}
+                </Link>
+
               </td>
             )}
           </tr>
@@ -37,22 +46,4 @@ export default function DataTable() {
       </tbody>
     </table>
   );
-}
-
-function getDataByColumn(data, column) {
-  const selectedData = JSON.parse(JSON.stringify(data));
-
-  for (let launch in selectedData) {
-    for (let test in selectedData[launch]) {
-      for (let col in selectedData[launch][test]) {
-        if (col === column) {
-          continue;
-        } else {
-          delete selectedData[launch][test][col]
-        }
-      }
-    }
-  }
-
-  return selectedData;
 }
