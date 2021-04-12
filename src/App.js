@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import * as fn from './functions/functions';
+import data from './data/data';
+import config from './data/config';
 
 import TableContext from './contexts/TableContext';
 import NavMenu from './components/NavMenu/NavMenu';
@@ -12,30 +14,6 @@ import Page4 from './components/Pages/Page4';
 import NotFoundPage from './components/Pages/NotFoundPage';
 import StatPage from './components/Pages/StatPage';
 
-const data = {
-  '2021-04-09': {
-    'test1': {'tср': 200, 'error': 0, 'tmin': 50},
-    'test2': {'tср': 200, 'error': 1, 'tmin': 50},
-    'test3': {'tср': 200, 'error': 0, 'tmin': 50},
-  },
-  '2021-04-08': {
-    'test1': {'tср': 200, 'error': 0, 'tmin': 50},
-    'test2': {'tср': 200, 'error': 0, 'tmin': 50},
-    'test3': {'tср': 200, 'error': 1, 'tmin': 50},
-  },
-  '2021-04-07': {
-    'test1': {'tср': 200, 'error': 0, 'tmin': 50},
-    'test2': {'tср': 200, 'error': 0, 'tmin': 50},
-    'test3': {'tср': 200, 'error': 0, 'tmin': 50, 'smthelse': 50},
-  },
-  '2021-04-06': {
-    'test1': {'tср': 200, 'error': 0, 'tmin': 50},
-    'test2': {'tср': 200, 'error': 0, 'tmin': 50},
-    'test3': {'tср': 200, 'error': 0, 'tmin': 50},
-    'test4': {'tср': 200, 'error': 0, 'tmin': 50, 'another': 5},
-  },
-};
-
 function App() {
    //const {url} = props;
   //const [posts] = useJsonFetch(`${url}posts`, 'GET');
@@ -45,7 +23,8 @@ function App() {
   const [selectedTab, setSelectedTab] = useState(fn.getTestTabs(data)[0]);
   const [tests, /*setTests*/] = useState(fn.getTestsNames(data));
 
-  const [stats, setStats] = useState({})
+  const [stats, setStats] = useState({});
+  const [testConfig, setTestConfig] = useState(JSON.stringify(config, null, 2));
  
   return (
     <TableContext.Provider value={
@@ -57,7 +36,9 @@ function App() {
         setSelectedTab,
         tests,
         stats,
-        setStats,       
+        setStats,
+        testConfig,
+        setTestConfig,       
       }} >
       <div className='page__wrapper'>
         <Router>

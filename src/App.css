@@ -150,3 +150,15 @@ tbody tr td:not(:first-of-type) {
   outline: none;
   cursor: pointer;
 }
+
+.config__box {
+  display: block;
+  width: 400px;
+  height: 250px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+
+  overflow: hidden;
+  resize: horizontal;
+}
