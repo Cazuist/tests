@@ -142,8 +142,14 @@ tbody tr td:not(:first-of-type) {
   margin-top: 20px;
 }
 
+.launcher__btn__box {
+  display: flex;
+}
+
 .launcher__btn {
+  display: block;
   padding: 10px 15px;
+  margin-right: 30px;
 
   border: 2px solid coral;
   border-radius: 10px;
@@ -151,14 +157,50 @@ tbody tr td:not(:first-of-type) {
   cursor: pointer;
 }
 
+.validation__status {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 10px;  
+}
+
+.validation__status.valid {
+  border: 2px solid green;  
+}
+
+.validation__status.invalid {
+  border: 2px solid red;
+}
+
 .config__box {
   display: block;
   width: 400px;
   height: 250px;
+  min-height: 250px;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 10px;
 
+  border-width: 1px;
+  border-style: solid;
+
   overflow: hidden;
   resize: horizontal;
+  outline: none;
+  opacity: 0.75;
+}
+
+.config__box.valid {
+  background-color: lightgreen;
+  border-color: green;
+}
+
+.config__box.invalid {
+  background-color: salmon;
+  border-color: red;
+}
+
+.config__box:focus {
+  border-width: 3px;
+  opacity: 1;
 }
