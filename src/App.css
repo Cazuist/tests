@@ -6,20 +6,8 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 400px) {
-  body {
-    font-size: 10px;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  body {
-    font-size: 14px;
-  }
-}
-
 html {
-  font-size: calc( 10px + (14 - 10) * ((100vw - 400px) / ( 800 - 400)));
+  font-size: 16px;
 }
 
 body {
@@ -29,12 +17,19 @@ body {
 /* menu
 */
 .page__wrapper {
-  width: 100%;
+  width: 1000px;
   max-width: 1000px;
+  padding-top: 90px;
 }
 
 .menu__box {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
   display: flex;
+  width: 100%;
   max-width: 1000px;
   margin: 3rem auto;
   margin-top: 0;
@@ -73,71 +68,97 @@ body {
   width: 100%;
 }
 
-.table__tabs {
-  display: flex;  
+.export_mode_box {
+  margin-top: 0.3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.export_mode_text {
+  display: flex;
+  margin-right: 10px;
+  align-items: center;
 }
 
-.table__tabs_tab {
-  padding: 5px 10px;
+.export_mode_box .p-checkbox.p-component,
+.export_mode_box .p-checkbox.p-component .p-checkbox-box{
+  width: 1.3rem;
+  height: 1.3rem;
+}
 
-  border: 2px solid lightblue;
+/* Stat page
+*/
+.p-tabview.p-component .p-tabview-panels {
+  padding: 0;
+}
+
+.p-tabview-panels {
+  position: relative;
+}
+
+.stat_page_table-box,
+.stat_page_charts-box {
+  min-height: 100px;
+}
+
+.svg-box {
+  width: 1000px;
+  min-height: 400px;
   background-color: lightgray;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-.table__tabs_tab:not(:first-of-type) {
-  margin-left: 10px;
-}
-
-.tab_selected {
-  background-color: blue;
-  border-color: tan;
-  color: white;
+.label_text_left,
+.label_text_bottom {
+  fill: gray;  
   font-weight: 700;
+  text-shadow: 2px 2px 2px black;
+  letter-spacing: 2px;
+  text-anchor: middle;
 }
 
-.data-table {
-  width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
-  border: 4px solid tan;
+.label_text_left {
+  transform: rotate(-90deg);
 }
 
-thead {
-  border-bottom: 4px solid tan;
+.tooltip_box {
+  position: absolute;
+  z-index: 200;
+  padding: 5px 10px;
+  
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  font-style: italic;
+  pointer-events: none;
+  opacity: 0.8;
 }
 
-th {
-  height: 34px;
-  border: 2px solid white;
-  background-color: gray;
+.tooltip_span {
+  position: relative;
 }
 
-td {
-  height: 40px;
-  text-align: center;
-  border: 1px solid red;
+.tooltip_box::before {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 25px;
+  display: block;
+  width: 7px;
+  height: 7px;
+
+  transform: rotate(45deg);
+
+  background-color: black;
 }
 
-thead tr:first-of-type th:first-of-type,
-td:first-of-type {
-  width: 20%;
-  border-right: 3px solid tan;
+.tooltip_box.hidden {
+  display: none;
 }
 
-tbody tr:nth-of-type(2n+1) {
-  background-color: lightgreen;
-}
-
-tbody tr:nth-of-type(2n) {
-  background-color: pink;
-}
-
-tbody tr td:not(:first-of-type) {
-  cursor: pointer;
-}
-
+/* Config page
+*/
 .test-launcher__box {
   margin-top: 20px;
 }
@@ -192,8 +213,7 @@ tbody tr td:not(:first-of-type) {
 
 .config__box.valid {
   background-color: lightgreen;
-  border-color: green;
-}
+  border-color: green;}
 
 .config__box.invalid {
   background-color: salmon;
@@ -203,4 +223,56 @@ tbody tr td:not(:first-of-type) {
 .config__box:focus {
   border-width: 3px;
   opacity: 1;
+}
+
+
+/* Переопределенные стили
+*/
+.p-datatable.p-component.p-datatable-striped.p-datatable-hoverable-rows > .p-datatable-footer,
+.table__container > .p-toolbar.p-component.p-mb-4 {
+  background-color: lightgray;
+}
+
+.table__container > .p-toolbar.p-component.p-mb-4 {
+  padding: 0.8rem 1rem;
+}
+
+.p-button.p-component.p-button-icon-only {
+  width: 2rem;
+  padding: 0.4rem 0;
+}
+
+.p-button.p-component.p-button-icon-only:not(:last-of-type),
+.p-paginator.p-component .p-paginator-element,
+.p-paginator.p-component.p-paginator-bottom .p-dropdown {
+  margin-right: 0.5rem;
+}
+
+button.p-paginator-element {
+  padding: 0.75rem;
+}
+
+.p-datatable .p-datatable-thead > tr > th,
+.p-datatable .p-datatable-tbody > tr > td {
+  text-align: center;
+}
+
+.p-table-head__tests {
+  display: flex;
+  justify-content: space-between;
+}
+
+.p-table-head__tests span {
+  display: flex;
+  align-items: center;
+}
+
+div.p-component.p-tooltip.p-tooltip-active .p-tooltip-text{
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.p-tabview .p-tabview-nav li.p-tabview-selected .p-tabview-nav-link {
+  background-color: gainsboro;
+  font-weight: 700;
 }

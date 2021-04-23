@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 
 const menus = [{
   title: 'Home',
-  uri: `/tests`,
+  uri: `/`,
   id: nanoid(),
 }, {
   title: 'Page2',
@@ -14,8 +14,8 @@ const menus = [{
   uri: '/Page3',
   id: nanoid(),
 }, {
-  title: 'Page4',
-  uri: '/Page4',
+  title: 'Config & Run',
+  uri: '/config',
   id: nanoid(),
 },
 ];
